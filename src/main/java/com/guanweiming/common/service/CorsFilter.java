@@ -39,6 +39,10 @@ public class CorsFilter extends OncePerRequestFilter {
     }
 
 
+    /**
+     * 本地请求消耗时间
+     * @param time 毫秒数
+     */
     protected void processTime(final long time) {
 
     }
