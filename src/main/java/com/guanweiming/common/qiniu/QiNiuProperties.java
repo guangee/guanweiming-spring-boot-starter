@@ -1,4 +1,4 @@
-package com.guanweiming.common.properties;
+package com.guanweiming.common.qiniu;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

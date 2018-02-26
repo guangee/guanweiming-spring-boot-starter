@@ -1,13 +1,13 @@
 {
   "properties": [
     {
-      "name": "tools.cors.enabled",
+      "name": "guanweiming.cors.enabled",
       "type": "java.lang.Boolean",
       "description": "是否允许跨域跨域",
       "default": false
     },
     {
-      "name": "tools.qiniu.enabled",
+      "name": "guanweiming.qiniu.enabled",
       "type": "java.lang.Boolean",
       "description": "是否配置七牛云",
       "default": false

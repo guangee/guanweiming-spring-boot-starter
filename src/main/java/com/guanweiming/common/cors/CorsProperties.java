@@ -1,4 +1,4 @@
-package com.guanweiming.common.properties;
+package com.guanweiming.common.cors;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -1,5 +1,6 @@
-package com.guanweiming.common.service;
+package com.guanweiming.common.cors;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import java.io.IOException;
 /**
  * @author https://github.com/zziaguan/
  */
+@Slf4j
 public class CorsFilter extends OncePerRequestFilter {
 
     private String maxAge;
@@ -30,35 +32,9 @@ public class CorsFilter extends OncePerRequestFilter {
         response.setHeader("Access-Control-Allow-Methods", allowMethods);
         response.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
         long start = System.currentTimeMillis();
-        beforeProcess(request, response);
         filterChain.doFilter(request, response);
-        afterProcess(request, response);
         long end = System.currentTimeMillis();
-        processTime(end - start);
-
-    }
-
-
-    /**
-     * 本地请求消耗时间
-     * @param time 毫秒数
-     */
-    protected void processTime(final long time) {
-
-    }
-
-    /**
-     * 方便用户在处理之前搞些事情
-     */
-    protected void beforeProcess(final HttpServletRequest request, final HttpServletResponse response) {
-
-    }
-
-    /**
-     * 方便用户在处理之后搞些事情
-     */
-    private void afterProcess(final HttpServletRequest request, final HttpServletResponse response) {
-
+        log.debug("use time:{} ms", (end - start));
     }
 
 }

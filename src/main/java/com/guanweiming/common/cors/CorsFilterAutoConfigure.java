@@ -1,7 +1,6 @@
-package com.guanweiming.common;
+package com.guanweiming.common.cors;
 
-import com.guanweiming.common.properties.CorsProperties;
-import com.guanweiming.common.service.CorsFilter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -13,10 +12,11 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @author https://github.com/zziaguan/
  */
+@Slf4j
 @Configuration
 @ConditionalOnClass(CorsFilter.class)
 @EnableConfigurationProperties(CorsProperties.class)
-@ConditionalOnProperty(prefix = "tools.cors", value = "enabled", havingValue = "true")
+@ConditionalOnProperty(name = "guanweiming.cors.enable")
 public class CorsFilterAutoConfigure {
 
     private final CorsProperties corsProperties;
@@ -30,6 +30,7 @@ public class CorsFilterAutoConfigure {
     @Bean
     @ConditionalOnMissingBean
     public CorsFilter corsFilter() {
+        log.info("配置跨域");
         return new CorsFilter(corsProperties.getMaxAge(), corsProperties.getAllowOrigin(), corsProperties.getAllowMethods());
     }
 }

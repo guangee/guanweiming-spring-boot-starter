@@ -1,7 +1,5 @@
-package com.guanweiming.common;
+package com.guanweiming.common.qiniu;
 
-import com.guanweiming.common.properties.QiNiuProperties;
-import com.guanweiming.common.service.QiniuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -16,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ConditionalOnClass(QiniuService.class)
 @EnableConfigurationProperties(QiNiuProperties.class)
-@ConditionalOnProperty(prefix = "tools.qiniu", value = "enabled", havingValue = "true")
+@ConditionalOnProperty(name = "tools.qiniu.enable",matchIfMissing = false)
 public class QiniuServiceAutoConfigure {
 
     private final QiNiuProperties qiNiuProperties;
