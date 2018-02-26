@@ -18,7 +18,7 @@ public class CorsFilter extends OncePerRequestFilter {
     private String allowOrigin;
     private String allowMethods;
 
-    public CorsFilter(String maxAge, String allowOrigin, String allowMethods) {
+    CorsFilter(String maxAge, String allowOrigin, String allowMethods) {
         this.maxAge = maxAge;
         this.allowOrigin = allowOrigin;
         this.allowMethods = allowMethods;

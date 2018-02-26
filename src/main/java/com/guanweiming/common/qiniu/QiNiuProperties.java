@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author https://github.com/zziaguan/
  */
-@ConfigurationProperties("tools.qiniu")
+@ConfigurationProperties("guanweiming.qiniu")
 public class QiNiuProperties {
     private String accessKey;
     private String secretKey;

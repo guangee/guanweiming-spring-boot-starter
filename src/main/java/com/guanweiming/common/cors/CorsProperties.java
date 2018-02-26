@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 /**
  * @author https://github.com/zziaguan/
  */
-@ConfigurationProperties("tools.cors")
+@ConfigurationProperties("guanweiming.cors")
 public class CorsProperties {
     private String maxAge = "3600";
     private String allowOrigin = "*";
