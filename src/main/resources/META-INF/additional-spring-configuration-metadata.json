@@ -3,13 +3,13 @@
     {
       "name": "guanweiming.cors.enabled",
       "type": "java.lang.Boolean",
-      "description": "是否允许跨域跨域",
+      "description": "是否允许跨域跨域.",
       "default": false
     },
     {
       "name": "guanweiming.qiniu.enabled",
       "type": "java.lang.Boolean",
-      "description": "是否配置七牛云",
+      "description": "是否配置七牛云.",
       "default": false
     }
   ]

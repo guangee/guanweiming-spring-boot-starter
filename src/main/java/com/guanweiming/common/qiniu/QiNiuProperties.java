@@ -9,7 +9,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Data
 @ConfigurationProperties("guanweiming.qiniu")
 public class QiNiuProperties {
-    private Boolean enable;
     private String accessKey;
     private String secretKey;
     private String bucket;
