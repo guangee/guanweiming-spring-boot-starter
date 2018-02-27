@@ -6,7 +6,7 @@
 
     <groupId>com.guanweiming.common</groupId>
     <artifactId>guanweiming-spring-boot-starter</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 
     <repositories>
         <repository>
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>com.guanweiming.common</groupId>
             <artifactId>tools</artifactId>
-            <version>0.0.2</version>
+            <version>0.0.4</version>
         </dependency>
     </dependencies>
 

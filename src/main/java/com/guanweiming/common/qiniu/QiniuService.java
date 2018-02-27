@@ -1,5 +1,7 @@
 package com.guanweiming.common.qiniu;
 
+import com.guanweiming.common.QiniuResponse;
+import com.guanweiming.common.StringUtil;
 import com.qiniu.util.Auth;
 
 /**
@@ -16,7 +18,15 @@ public class QiniuService {
         this.bucket = bucket;
     }
 
-    public String uptoken(){
+    public String uptoken() {
         return Auth.create(accessKey, secretKey).uploadToken(bucket);
+    }
+
+    public QiniuResponse qiniuResponse() {
+        String token = uptoken();
+        if (StringUtil.isBlank(token)) {
+            return QiniuResponse.createByError();
+        }
+        return QiniuResponse.createBySuccess(token);
     }
 }
