@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(CorsProperties.class)
-@ConditionalOnProperty(name = "guanweiming.cors.enable", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "guanweiming.cors", name = "enabled", matchIfMissing = true)
 public class CorsFilterAutoConfigure {
 
     private final CorsProperties corsProperties;
@@ -28,7 +28,7 @@ public class CorsFilterAutoConfigure {
     @Bean
     @ConditionalOnMissingBean
     public CorsFilter corsFilter() {
-        log.info("配置跨域");
+        log.debug("配置跨域");
         return new CorsFilter(corsProperties.getMaxAge(), corsProperties.getAllowOrigin(), corsProperties.getAllowMethods());
     }
 }

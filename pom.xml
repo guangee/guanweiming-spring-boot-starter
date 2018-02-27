@@ -7,6 +7,13 @@
     <groupId>com.guanweiming.common</groupId>
     <artifactId>guanweiming-spring-boot-starter</artifactId>
     <version>1.0</version>
+
+    <repositories>
+        <repository>
+            <id>maven-repo</id>
+            <url>https://raw.github.com/zziaguan/maven/master</url>
+        </repository>
+    </repositories>
     
     <dependencies>
         <dependency>
@@ -43,6 +50,12 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <!--私人小工具-->
+        <dependency>
+            <groupId>com.guanweiming.common</groupId>
+            <artifactId>tools</artifactId>
+            <version>0.0.2</version>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -61,6 +74,17 @@
     <build>
         <finalName>${project.name}-${project.version}</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWarnings>true</showWarnings>
+                </configuration>
+            </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
                 <version>3.0.1</version>
