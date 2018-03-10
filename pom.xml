@@ -11,7 +11,7 @@
     <repositories>
         <repository>
             <id>maven-repo</id>
-            <url>https://raw.github.com/zziaguan/maven/master</url>
+            <url>https://raw.githubusercontent.com/zziaguan/maven/master</url>
         </repository>
         <repository>
             <id>ali</id>
