@@ -26,7 +26,7 @@ public class AliYunSmsServiceAutoConfigure {
 
     @Bean
     @ConditionalOnMissingBean
-    public AliYunSmsService qiniuService() {
+    public AliYunSmsService aliYunSmsService() {
         log.debug("注册七牛云");
         return new AliYunSmsService(aliYunSmsProperties);
     }
