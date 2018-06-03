@@ -6,7 +6,7 @@
 
     <groupId>com.guanweiming.common</groupId>
     <artifactId>guanweiming-spring-boot-starter</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.6</version>
 
     <repositories>
         <repository>
@@ -41,6 +41,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+        </dependency>
         <!--七牛云存储上传凭证获取-->
         <dependency>
             <groupId>com.qiniu</groupId>
@@ -57,6 +61,17 @@
             <groupId>com.guanweiming.common</groupId>
             <artifactId>tools</artifactId>
             <version>0.0.4</version>
+        </dependency>
+        <!--阿里云短信-->
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.aliyun</groupId>
+            <artifactId>aliyun-java-sdk-core</artifactId>
+            <version>4.0.2</version>
         </dependency>
     </dependencies>
 
@@ -124,7 +139,7 @@
     <distributionManagement>
         <repository>
             <id>maven-repo</id>
-            <url>file://d:/maven-repo</url>
+            <url>file:///Users/guanweiming/maven-repo</url>
         </repository>
     </distributionManagement>
 
