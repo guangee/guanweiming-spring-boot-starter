@@ -49,6 +49,7 @@ public class AliYunSmsService {
         request.setSignName(aliYunSmsProperties.getSignName());
         request.setTemplateCode(aliYunSmsProperties.getTemplateCode());
         JSONObject object = new JSONObject(param);
+        log.debug(object.toString());
         request.setTemplateParam(object.toString());
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
         return sendSmsResponse.getCode();
