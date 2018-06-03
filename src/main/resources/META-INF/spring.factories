@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.guanweiming.common.qiniu.QiniuServiceAutoConfigure,\
-com.guanweiming.common.cors.CorsFilterAutoConfigure
+com.guanweiming.common.cors.CorsFilterAutoConfigure,\
+com.guanweiming.common.aliyun.sms.AliYunSmsServiceAutoConfigure
