@@ -17,6 +17,12 @@
       "type": "java.lang.Boolean",
       "description": "是否配置阿里云短信接口.",
       "default": false
+    },
+    {
+      "name": "guanweiming.wx.miniapp.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否配置微信小程序.",
+      "default": false
     }
   ]
 }

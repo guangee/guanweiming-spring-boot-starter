@@ -6,7 +6,9 @@
 
     <groupId>com.guanweiming.common</groupId>
     <artifactId>guanweiming-spring-boot-starter</artifactId>
-    <version>1.0.6</version>
+
+    <description>添加微信小程序</description>
+    <version>1.0.7</version>
 
     <repositories>
         <repository>
@@ -60,7 +62,7 @@
         <dependency>
             <groupId>com.guanweiming.common</groupId>
             <artifactId>tools</artifactId>
-            <version>0.0.4</version>
+            <version>0.0.5</version>
         </dependency>
         <!--阿里云短信-->
         <dependency>
@@ -72,6 +74,11 @@
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-core</artifactId>
             <version>3.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.0</version>
         </dependency>
     </dependencies>
 
