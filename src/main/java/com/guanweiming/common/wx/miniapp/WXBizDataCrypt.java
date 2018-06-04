@@ -42,11 +42,9 @@ public class WXBizDataCrypt {
      *                       *
      * @return 返回解密后的字符串
      * *
-     * @throws Exception
-     * @Description (TODO这里用一句话描述这个方法的作用)
      * *
      */
-    public String decrypt(String encryptedData, String sessionKey, String iv, String encodingFormat) throws NoSuchPaddingException, NoSuchAlgorithmException, IOException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
+    public String decrypt(String encryptedData, String sessionKey, String iv, String encodingFormat) {
         try {
             Cipher cipher = Cipher.getInstance("AES/CBC/NoPadding");
             SecretKeySpec secretKeySpec = new SecretKeySpec(Base64.getDecoder().decode(sessionKey), "AES");
