@@ -8,7 +8,7 @@
     <artifactId>guanweiming-spring-boot-starter</artifactId>
 
     <description>添加微信小程序</description>
-    <version>1.0.7</version>
+    <version>1.0.8</version>
 
     <repositories>
         <repository>

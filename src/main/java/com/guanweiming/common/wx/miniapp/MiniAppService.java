@@ -12,18 +12,12 @@ import org.json.JSONException;
 import org.springframework.web.client.RestTemplate;
 
 import javax.crypto.BadPaddingException;
-import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
 import java.io.IOException;
-import java.nio.charset.Charset;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
@@ -41,7 +35,7 @@ public class MiniAppService {
             .build();
     private final MiniAppProperties miniAppProperties;
 
-    MiniAppService( MiniAppProperties miniAppProperties){
+    MiniAppService(MiniAppProperties miniAppProperties) {
         this.miniAppProperties = miniAppProperties;
     }
 
