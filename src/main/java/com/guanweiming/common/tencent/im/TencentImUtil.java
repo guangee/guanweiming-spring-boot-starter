@@ -1,6 +1,5 @@
 package com.guanweiming.common.tencent.im;
 
-import com.ubl360.car.common.Base64Util;
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
@@ -54,6 +53,7 @@ public class TencentImUtil {
     }
 
     /**
+     * 生成 tls 票据
      * @param expire      有效期，单位是秒，推荐一个月
      * @param strAppid3rd 填写与 sdkAppid 一致字符串形式的值
      * @param skdAppid    应用的 appid
@@ -61,8 +61,7 @@ public class TencentImUtil {
      * @param accountType 创建应用后在配置页面上展示的 acctype
      * @param privStr     生成 tls 票据使用的私钥内容
      * @return 如果出错，GenTLSSignatureResult 中的 urlSig为空，errMsg 为出错信息，成功返回有效的票据
-     * @throws IOException
-     * @brief 生成 tls 票据
+     * @throws IOException IOException
      */
     @Deprecated
     public GenTLSSignatureResult GenTLSSignature(long expire, String strAppid3rd, long skdAppid,
@@ -138,6 +137,7 @@ public class TencentImUtil {
     }
 
     /**
+     * 校验 tls 票据
      * @param urlSig      返回 tls 票据
      * @param strAppid3rd 填写与 sdkAppid 一致的字符串形式的值
      * @param skdAppid    应的 appid
@@ -147,8 +147,7 @@ public class TencentImUtil {
      *                    pkcs8 -topk8 -in ec_key.pem -outform PEM -out p8_priv.pem -nocrypt
      * @return 如果出错 CheckTLSSignatureResult 中的 verifyResult 为 false，错误信息在
      * errMsg，校验成功为 true
-     * @throws DataFormatException
-     * @brief 校验 tls 票据
+     * @throws DataFormatException DataFormatException
      */
     @Deprecated
     public CheckTLSSignatureResult CheckTLSSignature(String urlSig, String strAppid3rd, long skdAppid,
@@ -226,11 +225,10 @@ public class TencentImUtil {
     }
 
     /**
+     * 生成 tls 票据，精简参数列表，有效期默认为 180 天
      * @param identifier 用户 id
-     *                   私钥文件内容
-     * @return
-     * @throws IOException
-     * @brief 生成 tls 票据，精简参数列表，有效期默认为 180 天
+     * @return GenTLSSignatureResult
+     * @throws IOException IOException
      */
     public GenTLSSignatureResult GenTLSSignatureEx(String identifier)
             throws IOException {
@@ -238,12 +236,12 @@ public class TencentImUtil {
     }
 
     /**
+     *
      * @param identifier 用户 id
-     * @param privStr    私钥文件内容
-     * @param expire     有效期，以秒为单位，推荐时长一个月
-     * @return
-     * @throws IOException
-     * @brief 生成 tls 票据，精简参数列表
+     * @param privStr 私钥文件内容
+     * @param expire 有效期，以秒为单位，推荐时长一个月
+     * @return GenTLSSignatureResult
+     * @throws IOException IOException
      */
     public GenTLSSignatureResult GenTLSSignatureEx(String identifier, String privStr, long expire)
             throws IOException {

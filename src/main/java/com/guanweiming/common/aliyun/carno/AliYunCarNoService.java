@@ -1,6 +1,6 @@
 package com.guanweiming.common.aliyun.carno;
 
-import com.ubl360.car.common.ServerResponse;
+import com.guanweiming.common.ServerResponse;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.json.JSONObject;
