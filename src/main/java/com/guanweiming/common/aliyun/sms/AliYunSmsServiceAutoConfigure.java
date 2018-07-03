@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(AliYunSmsProperties.class)
-@ConditionalOnProperty(prefix = "guanweiming.aliyun.sms", name = "enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "guanweiming.aliyun.sms", name = "enabled")
 public class AliYunSmsServiceAutoConfigure {
 
 

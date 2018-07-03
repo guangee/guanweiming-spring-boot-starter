@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(CorsProperties.class)
-@ConditionalOnProperty(prefix = "guanweiming.cors", name = "enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "guanweiming.cors", name = "enabled")
 public class CorsFilterAutoConfigure {
 
     private final CorsProperties corsProperties;

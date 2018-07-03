@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(QiNiuProperties.class)
-@ConditionalOnProperty(prefix = "guanweiming.qiniu", name = "enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "guanweiming.qiniu", name = "enabled")
 public class QiniuServiceAutoConfigure {
 
 

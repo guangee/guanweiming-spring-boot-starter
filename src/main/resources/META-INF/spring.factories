@@ -1,5 +1,9 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.guanweiming.common.qiniu.QiniuServiceAutoConfigure,\
-com.guanweiming.common.cors.CorsFilterAutoConfigure,\
-com.guanweiming.common.aliyun.sms.AliYunSmsServiceAutoConfigure,\
-com.guanweiming.common.wx.miniapp.MiniAppServiceAutoConfigure
+  com.guanweiming.common.qiniu.QiniuServiceAutoConfigure,\
+  com.guanweiming.common.cors.CorsFilterAutoConfigure,\
+  com.guanweiming.common.aliyun.sms.AliYunSmsServiceAutoConfigure,\
+  com.guanweiming.common.wx.miniapp.MiniAppServiceAutoConfigure,\
+  com.guanweiming.common.aliyun.carno.AliYunCarNoServiceAutoConfigure,\
+  com.guanweiming.common.map.GaoDeMapServiceAutoConfigure,\
+  com.guanweiming.common.tencent.im.TencentImServiceAutoConfigure,\
+  com.guanweiming.common.tencent.map.TencentMapServiceAutoConfigure

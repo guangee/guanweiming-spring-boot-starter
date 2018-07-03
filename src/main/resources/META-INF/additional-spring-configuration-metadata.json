@@ -23,6 +23,30 @@
       "type": "java.lang.Boolean",
       "description": "是否配置微信小程序.",
       "default": false
+    },
+    {
+      "name": "guanweiming.aliyun.ocr.car.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否配置阿里云ocr识别车牌号.",
+      "default": false
+    },
+    {
+      "name": "guanweiming.gaode.map.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否配置微信小程序.",
+      "default": false
+    },
+    {
+      "name": "guanweiming.tencent.im.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否配置腾讯云IM组件.",
+      "default": false
+    },
+    {
+      "name": "guanweiming.tencent.map.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否配置腾讯云地图组件.",
+      "default": false
     }
   ]
 }
