@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(MiniAppProperties.class)
-@ConditionalOnProperty(prefix = "guanweiming.wx.miniapp", name = "enabled", matchIfMissing = true)
+@ConditionalOnProperty(prefix = "guanweiming.wx.miniapp", name = "enabled")
 public class MiniAppServiceAutoConfigure {
 
 

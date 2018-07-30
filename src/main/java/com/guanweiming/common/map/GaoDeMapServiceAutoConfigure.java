@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 @EnableConfigurationProperties(GaoDeMapProperties.class)
-@ConditionalOnProperty(prefix = "guanweiming.gaode.map", name = "enabled",havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(prefix = "guanweiming.gaode.map", name = "enabled")
 public class GaoDeMapServiceAutoConfigure {
 
     private final GaoDeMapProperties gaoDeMapProperties;
