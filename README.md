@@ -2,21 +2,17 @@
 在pom.xml中加入以下代码
 ```xml
 <dependency>
-    <groupId>com.guanweiming.common</groupId>
-    <artifactId>guanweiming-spring-boot-starter</artifactId>
-    <version>1.1.0</version>
+	    <groupId>com.github.zziaguan</groupId>
+	    <artifactId>starter</artifactId>
+	    <version>1.1.1</version>
 </dependency>
 ```
 
 ```xml
 <repositories>
     <repository>
-        <id>qiniu</id>
-        <url>http://p9w3qyosn.bkt.clouddn.com/</url>
-    </repository>
-    <repository>
-        <id>ali</id>
-        <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+    		    <id>jitpack.io</id>
+    		    <url>https://jitpack.io</url>
     </repository>
 </repositories>
 

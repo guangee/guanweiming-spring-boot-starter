@@ -33,7 +33,7 @@
     {
       "name": "guanweiming.gaode.map.enabled",
       "type": "java.lang.Boolean",
-      "description": "是否配置微信小程序.",
+      "description": "是否开启高德地图组件.",
       "default": false
     },
     {
