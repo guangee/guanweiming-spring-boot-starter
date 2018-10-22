@@ -8,17 +8,9 @@
     <artifactId>guanweiming-spring-boot-starter</artifactId>
 
     <description>对常见第三方组件的封装</description>
-    <version>1.1.2</version>
+    <version>1.1.4</version>
 
     <repositories>
-        <repository>
-            <id>ali</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>repo1</id>
-            <url>https://repo1.maven.org/maven2/</url>
-        </repository>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
@@ -27,30 +19,8 @@
             <id>mirror.jitpack.io</id>
             <url>http://jitpack.cdn.coding-space.cn</url>
         </repository>
-        <repository>
-            <id>spring-snapshots</id>
-            <url>http://repo.spring.io/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>spring-milestones</id>
-            <url>http://repo.spring.io/milestone</url>
-        </repository>
 
     </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-snapshots</id>
-            <url>http://repo.spring.io/snapshot</url>
-        </pluginRepository>
-        <pluginRepository>
-            <id>spring-milestones</id>
-            <url>http://repo.spring.io/milestone</url>
-        </pluginRepository>
-    </pluginRepositories>
-    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -146,7 +116,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.0.4.RELEASE</version>
+                <version>2.0.6.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
