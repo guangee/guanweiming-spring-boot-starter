@@ -1,6 +1,6 @@
 package com.guanweiming.common.tencent.im;
 
-import com.guanweiming.common.JsonUtil;
+import com.guanweiming.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.json.JSONObject;

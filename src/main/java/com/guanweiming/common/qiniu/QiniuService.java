@@ -1,8 +1,8 @@
 package com.guanweiming.common.qiniu;
 
 import com.google.gson.Gson;
-import com.guanweiming.common.QiniuResponse;
-import com.guanweiming.common.StringUtil;
+import com.guanweiming.common.utils.QiniuResponse;
+import com.guanweiming.common.utils.StringUtil;
 import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;

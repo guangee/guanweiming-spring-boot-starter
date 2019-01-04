@@ -1,8 +1,7 @@
 package com.guanweiming.common.map;
 
 import com.google.common.collect.Lists;
-import com.guanweiming.common.JsonUtil;
-import com.guanweiming.common.ServerResponse;
+import com.guanweiming.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
@@ -37,7 +36,7 @@ public class GaoDeMapService {
      * @param longitude 经度
      * @return 逆地理位置解析结果
      */
-    public ServerResponse<Map> reGeo(double latitude, double longitude) {
+    public utils.ServerResponse<Map> reGeo(double latitude, double longitude) {
         latitude = ((int) (latitude * 1000000)) / 1000000.0;
         longitude = ((int) (longitude * 1000000)) / 1000000.0;
 
@@ -49,9 +48,9 @@ public class GaoDeMapService {
         Map map = JsonUtil.fromJson(result, Map.class);
         JSONObject object = JsonUtil.toJsonObject(result);
         if ("OK".equals(object.getString("info"))) {
-            return ServerResponse.createBySuccess(map);
+            return utils.ServerResponse.createBySuccess(map);
         }
 
-        return ServerResponse.createByErrorMessage("错误");
+        return utils.ServerResponse.createByErrorMessage("错误");
     }
 }
