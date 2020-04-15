@@ -5,7 +5,7 @@
 <dependency>
     <groupId>com.github.guangee</groupId>
     <artifactId>guanweiming-spring-boot-starter</artifactId>
-	<version>dev</version>
+	<version>2.2.2.RELEASE</version>
 </dependency>
 ```
 
