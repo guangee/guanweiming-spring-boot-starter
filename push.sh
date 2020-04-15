@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-git add src
-git add pom.xml
+git add .
 git commit -m "INIT"
 git push origin master
+git push origin --tags

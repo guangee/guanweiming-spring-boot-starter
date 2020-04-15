@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/guangee/guanweiming-spring-boot-starter.svg)](https://jitpack.io/#guangee/guanweiming-spring-boot-starter)
 # 使用方式
 在pom.xml中加入以下代码
 ```xml
