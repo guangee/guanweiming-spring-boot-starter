@@ -43,10 +43,29 @@
     </developers>
 
     <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
+            <repository>
+                <id>ali</id>
+                <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            </repository>
+            <repository>
+                <id>repo1</id>
+                <url>https://repo1.maven.org/maven2/</url>
+            </repository>
+            <repository>
+                <id>spring-snapshots</id>
+                <url>http://repo.spring.io/snapshot</url>
+                <snapshots>
+                    <enabled>true</enabled>
+                </snapshots>
+            </repository>
+            <repository>
+                <id>spring-milestones</id>
+                <url>http://repo.spring.io/milestone</url>
+            </repository>
+            <repository>
+                <id>jitpack.io</id>
+                <url>https://jitpack.io</url>
+            </repository>
     </repositories>
     <dependencies>
         <dependency>
