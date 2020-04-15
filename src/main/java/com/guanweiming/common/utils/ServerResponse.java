@@ -1,8 +1,7 @@
-package utils;
+package com.guanweiming.common.utils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.guanweiming.common.utils.ResponseCode;
 
 import java.io.Serializable;
 
