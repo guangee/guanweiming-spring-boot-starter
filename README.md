@@ -3,9 +3,9 @@
 在pom.xml中加入以下代码
 ```xml
 <dependency>
-    <groupId>com.github.zziaguan</groupId>
-	<artifactId>starter</artifactId>
-	<version>1.1.1</version>
+    <groupId>com.github.guangee</groupId>
+    <artifactId>guanweiming-spring-boot-starter</artifactId>
+	<version>dev</version>
 </dependency>
 ```
 
