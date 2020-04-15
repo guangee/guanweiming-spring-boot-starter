@@ -8,7 +8,39 @@
     <artifactId>guanweiming-spring-boot-starter</artifactId>
 
     <description>对常见第三方组件的封装</description>
-    <version>1.1.6</version>
+    <version>2.1.0.RELEASE</version>
+
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <version.java>1.8</version.java>
+        <version.swagger>2.9.2</version.swagger>
+        <version.spring-boot>2.1.0.RELEASE</version.spring-boot>
+        <version.lombok>1.16.18</version.lombok>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>http://spring4all.com</url>
+        <connection>git@github.com:SpringForAll/spring-boot-starter-swagger.git</connection>
+        <developerConnection>https://github.com/SpringForAll/spring-boot-starter-swagger</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>关卫明-小关同学</name>
+            <email>roma@guanweiming.com</email>
+            <organization>https://guanweiming.com</organization>
+        </developer>
+    </developers>
 
     <repositories>
         <repository>
@@ -115,7 +147,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.0.RELEASE</version>
+                <version>${version.spring-boot}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>

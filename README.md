@@ -2,17 +2,17 @@
 在pom.xml中加入以下代码
 ```xml
 <dependency>
-	    <groupId>com.github.zziaguan</groupId>
-	    <artifactId>starter</artifactId>
-	    <version>1.1.1</version>
+    <groupId>com.github.zziaguan</groupId>
+	<artifactId>starter</artifactId>
+	<version>1.1.1</version>
 </dependency>
 ```
 
 ```xml
 <repositories>
     <repository>
-    		    <id>jitpack.io</id>
-    		    <url>https://jitpack.io</url>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
     </repository>
 </repositories>
 
