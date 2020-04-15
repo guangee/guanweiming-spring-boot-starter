@@ -43,10 +43,6 @@
 
     <repositories>
         <repository>
-            <id>ali</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
             <id>repo1</id>
             <url>https://repo1.maven.org/maven2/</url>
         </repository>
@@ -62,8 +58,8 @@
             <url>http://repo.spring.io/milestone</url>
         </repository>
         <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
+            <id>ali</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
     </repositories>
     <dependencies>
