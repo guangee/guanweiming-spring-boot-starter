@@ -47,11 +47,6 @@
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
         </repository>
-        <repository>
-            <id>mirror.jitpack.io</id>
-            <url>http://jitpack.cdn.coding-space.cn</url>
-        </repository>
-
     </repositories>
     <dependencies>
         <dependency>
