@@ -4,6 +4,7 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.gson.annotations.SerializedName;
 import com.guanweiming.common.utils.JsonUtil;
+import com.guanweiming.common.utils.ServerResponse;
 import com.guanweiming.common.utils.StringUtil;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -51,7 +52,7 @@ public class MiniAppService {
     }
 
 
-    public utils.ServerResponse<SessionKeyVo> sessionKey(String code) throws JSONException {
+    public ServerResponse<SessionKeyVo> sessionKey(String code) throws JSONException {
 
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -70,12 +71,12 @@ public class MiniAppService {
         CACHE.put(code, sessinKey);
         OPENID_CACHE.put(code, openid);
         SessionKeyVo sessionKeyVo = JsonUtil.fromJson(result, SessionKeyVo.class);
-        return utils.ServerResponse.createBySuccess(sessionKeyVo);
+        return ServerResponse.createBySuccess(sessionKeyVo);
     }
 
-    public utils.ServerResponse<SessionKeyVo> descrypt(String code, String appId, String encryptedData, String iv) throws NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, JSONException {
+    public ServerResponse<SessionKeyVo> descrypt(String code, String appId, String encryptedData, String iv) throws NoSuchPaddingException, InvalidKeyException, NoSuchAlgorithmException, IOException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, JSONException {
         if (StringUtil.isBlank(code)) {
-            return utils.ServerResponse.createByErrorMessage("code 值不允许为空");
+            return ServerResponse.createByErrorMessage("code 值不允许为空");
         }
         String sessionKey = CACHE.getIfPresent(code);
         if (StringUtil.isBlank(sessionKey)) {
@@ -97,6 +98,6 @@ public class MiniAppService {
         }
         String result = WXBizDataCrypt.getInstance().decrypt(encryptedData, sessionKey, iv, "utf-8");
         SessionKeyVo sessionKeyVo = JsonUtil.fromJson(result, SessionKeyVo.class);
-        return utils.ServerResponse.createBySuccess(sessionKeyVo);
+        return ServerResponse.createBySuccess(sessionKeyVo);
     }
 }

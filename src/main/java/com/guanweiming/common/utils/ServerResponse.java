@@ -8,6 +8,7 @@ import java.io.Serializable;
 /**
  * @author zziaguan
  */
+@Deprecated
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> implements Serializable {
 

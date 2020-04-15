@@ -1,5 +1,6 @@
 package com.guanweiming.common.aliyun.carno;
 
+import com.guanweiming.common.utils.ServerResponse;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.json.JSONObject;
@@ -19,7 +20,7 @@ public class AliYunCarNoService {
     }
 
 
-    public utils.ServerResponse<String> ocr(String base64Str) {
+    public ServerResponse<String> ocr(String base64Str) {
         String url = "https://dm-53.data.aliyun.com/rest/160601/ocr/ocr_vehicle.json";
 
         String appCode = aliYunCarNoProperties.getAppCode();
@@ -52,8 +53,8 @@ public class AliYunCarNoService {
             log.debug("hello");
         } catch (IOException e) {
             e.printStackTrace();
-            return utils.ServerResponse.createByErrorMessage("解析失败：" + e.getMessage());
+            return ServerResponse.createByErrorMessage("解析失败：" + e.getMessage());
         }
-        return utils.ServerResponse.createBySuccess(result);
+        return ServerResponse.createBySuccess(result);
     }
 }
