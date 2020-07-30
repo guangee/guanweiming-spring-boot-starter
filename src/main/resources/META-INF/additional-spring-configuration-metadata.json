@@ -13,6 +13,12 @@
       "default": false
     },
     {
+      "name": "guanweiming.s3.enabled",
+      "type": "java.lang.Boolean",
+      "description": "是否配置亚马逊S3.",
+      "default": false
+    },
+    {
       "name": "guanweiming.aliyun.sms.enabled",
       "type": "java.lang.Boolean",
       "description": "是否配置阿里云短信接口.",

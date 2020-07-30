@@ -1,15 +1,14 @@
 package com.guanweiming.common.utils;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.guanweiming.common.utils.ResponseCode;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 
 /**
  * @author zziaguan
  */
-@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class QiniuResponse implements Serializable {
 
     private final String uptoken;
