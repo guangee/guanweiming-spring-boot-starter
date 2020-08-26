@@ -51,7 +51,6 @@ public class JsonUtil {
 
     public static Gson create() {
         return new GsonBuilder()
-                .setPrettyPrinting()
                 /* 更改先后顺序没有影响 */
                 .registerTypeAdapter(LocalDateTime.class, new JsonSerializer<LocalDateTime>(){
                     @Override
