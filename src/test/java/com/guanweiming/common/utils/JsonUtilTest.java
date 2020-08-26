@@ -21,6 +21,6 @@ public class JsonUtilTest {
         String json = JsonUtil.toJson(demo);
         System.out.println(json);
         demo = JsonUtil.fromJson(json, Demo.class);
-        System.out.println(JsonUtil.toJson(demo));
+        System.out.println(JsonUtil.toJson(demo,true));
     }
 }

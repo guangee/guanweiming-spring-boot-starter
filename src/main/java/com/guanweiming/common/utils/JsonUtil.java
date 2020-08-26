@@ -37,44 +37,21 @@ public class JsonUtil {
     private static final String TIME_PATTERN = "HH:mm:ss";
 
 
-    private static final Gson GSON = create();
-    /**
-     * 序列化
-     */
-    final static JsonSerializer<LocalDateTime> JSON_SERIALIZER_DATE_TIME = (localDateTime, type, jsonSerializationContext) -> new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATETIME_PATTERN)));
-    final static JsonSerializer<LocalDate> JSON_SERIALIZER_DATE = (localDate, type, jsonSerializationContext) -> new JsonPrimitive(localDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN)));
-    /**
-     * 反序列化
-     */
-    final static JsonDeserializer<LocalDateTime> JSON_DESERIALIZER_DATE_TIME = (jsonElement, type, jsonDeserializationContext) -> LocalDateTime.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATETIME_PATTERN));
-    final static JsonDeserializer<LocalDate> JSON_DESERIALIZER_DATE = (jsonElement, type, jsonDeserializationContext) -> LocalDate.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATE_PATTERN));
+    private static final Gson GSON = create(false);
+    private static final Gson PRETTY_GSON = create(true);
 
-    public static Gson create() {
-        return new GsonBuilder()
+    public static Gson create(boolean prettyPrint) {
+        GsonBuilder gsonBuilder = new GsonBuilder()
                 /* 更改先后顺序没有影响 */
-                .registerTypeAdapter(LocalDateTime.class, new JsonSerializer<LocalDateTime>(){
-                    @Override
-                    public JsonElement serialize(LocalDateTime localDateTime, Type typeOfSrc, JsonSerializationContext context) {
-                        return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATETIME_PATTERN)));
-                    }
-                }).registerTypeAdapter(LocalDate.class, new JsonSerializer<LocalDate>(){
-                    @Override
-                    public JsonElement serialize(LocalDate localDateTime, Type typeOfSrc, JsonSerializationContext context) {
-                        return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATE_PATTERN)));
-                    }
-                })
-                .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
-                    @Override
-                    public LocalDateTime deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                        return LocalDateTime.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATETIME_PATTERN));
-                    }
-                }).registerTypeAdapter(LocalDate.class, new JsonDeserializer<LocalDate>() {
-                    @Override
-                    public LocalDate deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
-                        return LocalDate.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATE_PATTERN));
-                    }
-                })
-                .create();
+                .registerTypeAdapter(LocalDateTime.class, (JsonSerializer<LocalDateTime>) (localDateTime, typeOfSrc, context) -> new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATETIME_PATTERN))))
+                .registerTypeAdapter(LocalDate.class, (JsonSerializer<LocalDate>) (localDateTime, typeOfSrc, context) -> new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATE_PATTERN))))
+                .registerTypeAdapter(LocalDateTime.class, (JsonDeserializer<LocalDateTime>) (jsonElement, typeOfT, context) -> LocalDateTime.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATETIME_PATTERN)))
+                .registerTypeAdapter(LocalDate.class, (JsonDeserializer<LocalDate>) (jsonElement, typeOfT, context) -> LocalDate.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATE_PATTERN)));
+
+        if (prettyPrint) {
+            gsonBuilder.setPrettyPrinting();
+        }
+        return gsonBuilder.create();
     }
 
     /**
@@ -109,7 +86,7 @@ public class JsonUtil {
      * @return 转换的结果
      */
     public static String toJson(final Object src) {
-        return GSON.toJson(src);
+        return toJson(src, false);
     }
 
     /**
@@ -120,7 +97,10 @@ public class JsonUtil {
      * @return 根据条件返回Json字符串
      */
     public static String toJson(final Object src, boolean format) {
-        return formatJson(toJson(src), format);
+        if (format) {
+            return PRETTY_GSON.toJson(src);
+        }
+        return GSON.toJson(src);
     }
 
     /**
@@ -220,67 +200,6 @@ public class JsonUtil {
         } catch (Exception e) {
             e.printStackTrace();
             return new JSONArray("['']");
-        }
-    }
-
-    private static String formatJson(String src, boolean format) {
-        if (StringUtil.isBlank(src)) {
-            return "";
-        }
-        if (!format) {
-            return src;
-        }
-        src = src.replace("\\\"", "\"");
-        StringBuilder sb = new StringBuilder("\n");
-        char last = '\0';
-        char current = '\0';
-        int indent = 0;
-        boolean isInQuotationMarks = false;
-        for (int i = 0; i < src.length(); i++) {
-            last = current;
-            current = src.charAt(i);
-            switch (current) {
-                case '"':
-                    if (last != '\\') {
-                        isInQuotationMarks = !isInQuotationMarks;
-                    }
-                    sb.append(current);
-                    break;
-                case '{':
-                case '[':
-                    sb.append(current);
-                    if (!isInQuotationMarks) {
-                        sb.append('\n');
-                        indent++;
-                        addIndentBlank(sb, indent);
-                    }
-                    break;
-                case '}':
-                case ']':
-                    if (!isInQuotationMarks) {
-                        sb.append('\n');
-                        indent--;
-                        addIndentBlank(sb, indent);
-                    }
-                    sb.append(current);
-                    break;
-                case ',':
-                    sb.append(current);
-                    if (last != '\\' && !isInQuotationMarks) {
-                        sb.append('\n');
-                        addIndentBlank(sb, indent);
-                    }
-                    break;
-                default:
-                    sb.append(current);
-            }
-        }
-        return sb.toString();
-    }
-
-    private static void addIndentBlank(StringBuilder sb, int indent) {
-        for (int i = 0; i < indent; i++) {
-            sb.append("\t");
         }
     }
 }
