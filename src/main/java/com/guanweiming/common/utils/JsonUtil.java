@@ -10,16 +10,17 @@ import com.fasterxml.jackson.datatype.jsr310.deser.LocalTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalTimeSerializer;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.google.gson.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -31,7 +32,51 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 public class JsonUtil {
 
-    private static final Gson GSON = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+    private static final String DATETIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    private static final String DATE_PATTERN = "yyyy-MM-dd";
+    private static final String TIME_PATTERN = "HH:mm:ss";
+
+
+    private static final Gson GSON = create();
+    /**
+     * 序列化
+     */
+    final static JsonSerializer<LocalDateTime> JSON_SERIALIZER_DATE_TIME = (localDateTime, type, jsonSerializationContext) -> new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATETIME_PATTERN)));
+    final static JsonSerializer<LocalDate> JSON_SERIALIZER_DATE = (localDate, type, jsonSerializationContext) -> new JsonPrimitive(localDate.format(DateTimeFormatter.ofPattern(DATE_PATTERN)));
+    /**
+     * 反序列化
+     */
+    final static JsonDeserializer<LocalDateTime> JSON_DESERIALIZER_DATE_TIME = (jsonElement, type, jsonDeserializationContext) -> LocalDateTime.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATETIME_PATTERN));
+    final static JsonDeserializer<LocalDate> JSON_DESERIALIZER_DATE = (jsonElement, type, jsonDeserializationContext) -> LocalDate.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATE_PATTERN));
+
+    public static Gson create() {
+        return new GsonBuilder()
+                .setPrettyPrinting()
+                /* 更改先后顺序没有影响 */
+                .registerTypeAdapter(LocalDateTime.class, new JsonSerializer<LocalDateTime>(){
+                    @Override
+                    public JsonElement serialize(LocalDateTime localDateTime, Type typeOfSrc, JsonSerializationContext context) {
+                        return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATETIME_PATTERN)));
+                    }
+                }).registerTypeAdapter(LocalDate.class, new JsonSerializer<LocalDate>(){
+                    @Override
+                    public JsonElement serialize(LocalDate localDateTime, Type typeOfSrc, JsonSerializationContext context) {
+                        return new JsonPrimitive(localDateTime.format(DateTimeFormatter.ofPattern(DATE_PATTERN)));
+                    }
+                })
+                .registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
+                    @Override
+                    public LocalDateTime deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return LocalDateTime.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATETIME_PATTERN));
+                    }
+                }).registerTypeAdapter(LocalDate.class, new JsonDeserializer<LocalDate>() {
+                    @Override
+                    public LocalDate deserialize(JsonElement jsonElement, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
+                        return LocalDate.parse(jsonElement.getAsJsonPrimitive().getAsString(), DateTimeFormatter.ofPattern(DATE_PATTERN));
+                    }
+                })
+                .create();
+    }
 
     /**
      * 返回的数据如果值为空或者空字符串，就不进行序列化 日期按照yyyy-MM-dd返回 时间按照yyyy-MM-dd HH:mm:ss返回 Long类型的数据序列化成String
@@ -40,18 +85,18 @@ public class JsonUtil {
         Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
         builder.serializationInclusion(JsonInclude.Include.ALWAYS);
         builder.serializerByType(LocalDateTime.class,
-                new LocalDateTimeSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(DATETIME_PATTERN)));
         builder.serializerByType(LocalDate.class,
-                new LocalDateSerializer(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                new LocalDateSerializer(DateTimeFormatter.ofPattern(DATE_PATTERN)));
         builder.serializerByType(LocalTime.class,
-                new LocalTimeSerializer(DateTimeFormatter.ofPattern("HH:mm:ss")));
+                new LocalTimeSerializer(DateTimeFormatter.ofPattern(TIME_PATTERN)));
 
         builder.deserializerByType(LocalDateTime.class,
-                new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                new LocalDateTimeDeserializer(DateTimeFormatter.ofPattern(DATETIME_PATTERN)));
         builder.deserializerByType(LocalDate.class,
-                new LocalDateDeserializer(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+                new LocalDateDeserializer(DateTimeFormatter.ofPattern(DATE_PATTERN)));
         builder.deserializerByType(LocalTime.class,
-                new LocalTimeDeserializer(DateTimeFormatter.ofPattern("HH:mm:ss")));
+                new LocalTimeDeserializer(DateTimeFormatter.ofPattern(TIME_PATTERN)));
 
         builder.serializerByType(Long.class, ToStringSerializer.instance);
         builder.serializerByType(Long.TYPE, ToStringSerializer.instance);
@@ -88,7 +133,7 @@ public class JsonUtil {
      * @return 转换之后的JavaBean对象
      */
     public static <T> T fromJson(String json, Class<T> classOfT) {
-        return new Gson().fromJson(json, classOfT);
+        return GSON.fromJson(json, classOfT);
     }
 
     /**
