@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.guanweiming.common.utils.JsonUtil;
 import com.guanweiming.common.utils.Result;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
@@ -26,7 +27,7 @@ public class GaoDeMapService {
     public synchronized String getGaoDeMapKey() {
         index = (index + 1) % keyList.size();
         String key = keyList.get(index);
-        log.debug("gaoDeKey:\t{}\t{}",keyList.size(), key);
+        log.debug("gaoDeKey:\t{}\t{}", keyList.size(), key);
         return key;
     }
 
@@ -37,7 +38,7 @@ public class GaoDeMapService {
      * @param longitude 经度
      * @return 逆地理位置解析结果
      */
-    public Result<Map> reGeo(double latitude, double longitude) {
+    public Result<Map> reGeo(double latitude, double longitude) throws JSONException {
         latitude = ((int) (latitude * 1000000)) / 1000000.0;
         longitude = ((int) (longitude * 1000000)) / 1000000.0;
 

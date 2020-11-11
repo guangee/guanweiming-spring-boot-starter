@@ -3,6 +3,7 @@ package com.guanweiming.common.aliyun.carno;
 import com.guanweiming.common.utils.Result;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class AliYunCarNoService {
     }
 
 
-    public Result<String> ocr(String base64Str) {
+    public Result<String> ocr(String base64Str) throws JSONException {
         String url = "https://dm-53.data.aliyun.com/rest/160601/ocr/ocr_vehicle.json";
 
         String appCode = aliYunCarNoProperties.getAppCode();

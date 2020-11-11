@@ -3,6 +3,7 @@ package com.guanweiming.common.tencent.im;
 import com.guanweiming.common.utils.JsonUtil;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class TencentImService {
         this.tencentImUtil = new TencentImUtil(tencentImProperties);
     }
 
-    public int register(String username, String nickname, String avatar,String userSig) {
+    public int register(String username, String nickname, String avatar, String userSig) throws JSONException {
         String url = HOST + "/v4/im_open_login_svc/account_import?" +
                 "usersig=" + userSig +
                 "&identifier=admin&" +
@@ -61,10 +62,10 @@ public class TencentImService {
     }
 
     public TencentImUtil.GenTLSSignatureResult GenTLSSignatureEx(String identifier) throws IOException {
-        return tencentImUtil.GenTLSSignatureEx(identifier) ;
+        return tencentImUtil.GenTLSSignatureEx(identifier);
     }
 
-    public TencentImUtil.CheckTLSSignatureResult CheckTLSSignatureEx(String urlSig, String identifier) throws DataFormatException {
-        return tencentImUtil.CheckTLSSignatureEx(urlSig,identifier);
+    public TencentImUtil.CheckTLSSignatureResult CheckTLSSignatureEx(String urlSig, String identifier) throws DataFormatException, JSONException {
+        return tencentImUtil.CheckTLSSignatureEx(urlSig, identifier);
     }
 }

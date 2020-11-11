@@ -1,5 +1,6 @@
 package com.guanweiming.common.utils;
 
+import com.github.pagehelper.PageInfo;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -50,5 +51,9 @@ public class PageResult<T> implements Serializable {
         result.msg = msg;
         result.status = ResponseCode.ERROR.getCode();
         return result;
+    }
+
+    public static <T> PageResult<T> success(PageInfo<T> pageInfo) {
+        return new PageResult<>(pageInfo.getTotal(), pageInfo.getList());
     }
 }

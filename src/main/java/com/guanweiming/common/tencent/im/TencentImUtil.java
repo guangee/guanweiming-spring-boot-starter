@@ -6,6 +6,7 @@ import org.bouncycastle.asn1.x509.SubjectPublicKeyInfo;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.openssl.PEMParser;
 import org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.CharArrayReader;
@@ -54,6 +55,7 @@ public class TencentImUtil {
 
     /**
      * 生成 tls 票据
+     *
      * @param expire      有效期，单位是秒，推荐一个月
      * @param strAppid3rd 填写与 sdkAppid 一致字符串形式的值
      * @param skdAppid    应用的 appid
@@ -138,6 +140,7 @@ public class TencentImUtil {
 
     /**
      * 校验 tls 票据
+     *
      * @param urlSig      返回 tls 票据
      * @param strAppid3rd 填写与 sdkAppid 一致的字符串形式的值
      * @param skdAppid    应的 appid
@@ -151,7 +154,7 @@ public class TencentImUtil {
      */
     @Deprecated
     public CheckTLSSignatureResult CheckTLSSignature(String urlSig, String strAppid3rd, long skdAppid,
-                                                     String identifier, long accountType, String publicKey) throws DataFormatException {
+                                                     String identifier, long accountType, String publicKey) throws DataFormatException, JSONException {
         CheckTLSSignatureResult result = new CheckTLSSignatureResult();
         Security.addProvider(new BouncyCastleProvider());
 
@@ -226,6 +229,7 @@ public class TencentImUtil {
 
     /**
      * 生成 tls 票据，精简参数列表，有效期默认为 180 天
+     *
      * @param identifier 用户 id
      * @return GenTLSSignatureResult
      * @throws IOException IOException
@@ -236,10 +240,9 @@ public class TencentImUtil {
     }
 
     /**
-     *
      * @param identifier 用户 id
-     * @param privStr 私钥文件内容
-     * @param expire 有效期，以秒为单位，推荐时长一个月
+     * @param privStr    私钥文件内容
+     * @param expire     有效期，以秒为单位，推荐时长一个月
      * @return GenTLSSignatureResult
      * @throws IOException IOException
      */
@@ -301,7 +304,7 @@ public class TencentImUtil {
         return result;
     }
 
-    public CheckTLSSignatureResult CheckTLSSignatureEx(String urlSig, String identifier) throws DataFormatException {
+    public CheckTLSSignatureResult CheckTLSSignatureEx(String urlSig, String identifier) throws DataFormatException, JSONException {
 
         CheckTLSSignatureResult result = new CheckTLSSignatureResult();
         Security.addProvider(new BouncyCastleProvider());
