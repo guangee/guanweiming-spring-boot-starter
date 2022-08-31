@@ -1,11 +1,10 @@
 package com.guanweiming.common.utils;
 
 import lombok.Data;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
 
-import static org.junit.Assert.*;
 
 public class JsonUtilTest {
 
